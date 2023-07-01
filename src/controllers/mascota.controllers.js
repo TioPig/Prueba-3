@@ -15,7 +15,8 @@ const obtenerMascotas = async (req, res) => {
                m.tipo_mascota,
                m.raza,
                m.fecha_nacimiento,
-               m.img
+               m.img,
+               m.id_usuario
             FROM mascota m
         `;
 

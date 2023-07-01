@@ -46,3 +46,9 @@ INSERT INTO `usuario` (`id_usuario`, `nombre`, `user`, `password`, `activo`) VAL
 (1, 'Italo', 'TioPig', '$2b$10$0sj78Oruw7T.5LQEgsYs7.XawsCtF3Wd3fpcz4lJedD1YzGuRk8SW', 1);
 
 /** Contraseña: Contrasena123
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJJdGFsbyIsImFjdGl2byI6MX0sImlhdCI6MTY4ODIxNzc5Nn0.rlxZbhfQ7qbWEUAV2U1PSdANDKeo6txjdebeA3smouQ
+
+TOKEN
+
+**/
