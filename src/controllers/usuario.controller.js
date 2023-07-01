@@ -65,7 +65,7 @@ const agregarUsuario = async (req, res) => {
             // "usuario": usuario
         });
     } catch (error) {
-        //console.log(error);
+        // console.log(error);
         return httpError(res, "Ocurrio algo en POST Usuario");
     }
 }

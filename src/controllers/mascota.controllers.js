@@ -15,7 +15,7 @@ const obtenerMascotas = async (req, res) => {
                m.tipo_mascota,
                m.raza,
                m.fecha_nacimiento,
-               m.img,
+               m.img
             FROM mascota m
         `;
 
@@ -35,18 +35,20 @@ const obtenerMascotas = async (req, res) => {
 const agregarMascota = async (req, res) => {
 
     try {
-        const { nombre, tipo_mascota, raza, fecha_nacimiento,img } = req.body;
+        const { nombre, tipo_mascota, raza, fecha_nacimiento,img} = req.body;
+        const token = req.headers.authorization;
+        const { usuario } = obtenerData(token.split(" ").pop());
 
+        const id_usuario = usuario.id;
 
-        const db = database();
+        const db = await database();
 
         const sql = `
-            INSERT INTO mascota(nombre, tipo_mascota, raza, fecha_nacimiento,img)
-            VALUES('${nombre}', '${tipo_mascota}', '${raza}', '${fecha_nacimiento}', '${img}')
+            INSERT INTO mascota(nombre, tipo_mascota, raza, fecha_nacimiento,img,id_usuario)
+            VALUES('${nombre}', '${tipo_mascota}', '${raza}', '${fecha_nacimiento}', '${img}',${id_usuario})
         `;
-
+        console.log(sql);
         const [resultado] = await db.query(sql);
-
         if (!resultado.insertId) {
             return res.json(
                 {
@@ -62,6 +64,7 @@ const agregarMascota = async (req, res) => {
             }
         );
     } catch (error) {
+        console.log(error);
         return httpError(res, "ERROR_POST_MASCOTA")
     }
 
@@ -80,7 +83,7 @@ const obtenerMascota = async (req, res) => {
                m.tipo_mascota,
                m.raza,
                m.fecha_nacimiento,
-               m.img,
+               m.img
             FROM mascota m
         WHERE m.id_mascota = ${id}
     `;
